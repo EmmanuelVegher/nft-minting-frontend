@@ -1,19 +1,24 @@
-import type { NextConfig } from "next";
+// next.config.js
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
+  // Uncomment and set basePath if your application is not at the root
+  //basePath: '/nft-minting-frontend',
+  // Uncomment and set assetPrefix if you're serving assets from a CDN or different path
+  //assetPrefix: '/nft-minting-frontend/',
   images: {
+    //unoptimized: true, // Disable Next.js image optimization if not needed
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'img.freepik.com',
         port: '',
-        pathname: '/**', // Allow all pathnames under this hostname
+        pathname: '/**',
       },
-      // Add more hostnames here if you use images from other external sources
+      // Add other remote patterns as needed
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

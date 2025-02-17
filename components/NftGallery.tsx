@@ -1,6 +1,6 @@
-// components/NftGallery.tsx
 import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
+import Image from 'next/image';
 
 interface NFTData {
   nftId: number;
@@ -52,13 +52,12 @@ const NftGallery = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {nfts.map((nft) => (
             <div key={nft.nftId} className="bg-gray-800 p-4 rounded-lg shadow-lg">
-              <img
+              <Image
                 src={nft.logoUrl}
                 alt={nft.name}
+                width={400}
+                height={300}
                 className="w-full h-48 object-cover rounded mb-4"
-                onError={(e) => {
-                  e.currentTarget.src = '/fallback-image.png';
-                }}
               />
               <h3 className="text-lg font-bold">{nft.name}</h3>
               <p>{nft.description}</p>

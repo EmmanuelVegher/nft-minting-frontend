@@ -4,24 +4,21 @@ import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { createConfig, WagmiConfig, http } from 'wagmi';
 import { sepolia } from '@wagmi/chains';
 
-const chains = [sepolia];
+// Ensure `chains` is a tuple by using `as const`
+const chains = [sepolia] as const;
 
 const { connectors } = getDefaultWallets({
   appName: 'NFT Minting App',
-  chains,
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID_HERE', // Replace with your actual project ID if using WalletConnect, otherwise, remove this line
+  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID_HERE',
 });
 
-
-const sepoliaRpcUrl = process.env.NEXT_PUBLIC_RPC_URL || 'YOUR_SEPOLIA_RPC_URL';  // Get your Sepolia RPC URL (e.g., from Infura, Alchemy)
-
+const sepoliaRpcUrl = process.env.NEXT_PUBLIC_RPC_URL || 'YOUR_SEPOLIA_RPC_URL';
 
 const config = createConfig({
-  autoConnect: true,
   connectors,
   chains,
   transports: {
-    [sepolia.id]: http(sepoliaRpcUrl),  // Provide the RPC URL here
+    [sepolia.id]: http(sepoliaRpcUrl),
   },
 });
 
@@ -32,7 +29,7 @@ interface WalletProviderProps {
 export function WalletProvider({ children }: WalletProviderProps) {
   return (
     <WagmiConfig config={config}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider>
         {children}
       </RainbowKitProvider>
     </WagmiConfig>
