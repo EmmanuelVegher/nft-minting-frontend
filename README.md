@@ -58,9 +58,13 @@ cd nft-minting-frontend
 
 npm install
 
-3) Run the development server:
+3) Build the application for production:
 
-npm run dev
+npm run build
+
+4) Start the production server:
+
+npm run start
 
 The app will be available at http://localhost:3000.
 
