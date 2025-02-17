@@ -47,6 +47,11 @@ nft-minting-frontend/
 ├── tailwind.config.ts        // Tailwind CSS configuration
 └── tsconfig.json             // TypeScript configuration
 
+**Deployment**
+The app is currently been deployed at : https://nft-minting-frontend-nine.vercel.app/
+
+You can navigate through the hosted app to see its functionalities
+
 **Installation**
 
 1) Clone the repository:
